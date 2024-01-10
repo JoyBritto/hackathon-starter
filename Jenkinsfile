@@ -1,21 +1,33 @@
 pipeline {
-  agent any 
-     stages {
-    stage('Checkout') {
-      steps {
-        sh 'echo passed'
-        //git branch: 'master', url: 'https://github.com/JoyBritto/hackathon-starter.git'
-      }
+    agent any
+    
+    environment {
+        // Define environment variables if needed
+        NODE_VERSION = '14' // Example Node.js version
     }
-    stage('Test') {
-      steps {
-        sh 'npm install'  
-      }
-    }
-    stage('Build') {
-      steps {
-        sh 'npm run build'  
-      }
-    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from the GitHub repository
+                git 'https://github.com/JoyBritto/hackathon-starter.git'
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                // Use Node.js specified in environment to install dependencies
+                sh "nvm install ${NODE_VERSION}"
+                sh "nvm use ${NODE_VERSION}"
+                sh 'npm install'
+            }
+        }
+        
+        stage('Run Tests') {
+            steps {
+                // Run tests if specified in the README or using npm test script
+                sh 'npm test'
+            }
+        }
+     }
   }
-}
