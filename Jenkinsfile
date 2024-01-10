@@ -7,8 +7,15 @@ pipeline {
         //git branch: 'master', url: 'https://github.com/JoyBritto/hackathon-starter.git'
       }
     }
-    stage('Build and Test') {
+    stage('Test') {
       steps {
         sh 'npm install'  
       }
     }
+    stage('Build') {
+      steps {
+        sh 'npm run build'  
+      }
+    }
+  }
+}
