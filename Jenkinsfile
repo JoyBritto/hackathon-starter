@@ -9,8 +9,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from the GitHub repository
-                git branch: 'master', url: 'https://github.com/JoyBritto/hackathon-starter.git'
+                git credentialsId: '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', 
+                url: 'https://github.com/JoyBritto/hackathon-starter.git',
+                branch: 'master'
             }
         }
         
