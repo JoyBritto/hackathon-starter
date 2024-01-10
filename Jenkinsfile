@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from the GitHub repository
-                git 'https://github.com/JoyBritto/hackathon-starter.git'
+                git branch: 'master', url: 'https://github.com/JoyBritto/hackathon-starter.git'
             }
         }
         
