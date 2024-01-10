@@ -4,6 +4,11 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        //git branch: 'main', url: 'https://github.co'
+        //git branch: 'master', url: 'https://github.com/JoyBritto/hackathon-starter.git'
+      }
+    }
+    stage('Build and Test') {
+      steps {
+        sh 'npm install'  
       }
     }
